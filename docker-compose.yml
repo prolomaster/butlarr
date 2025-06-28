@@ -1,0 +1,13 @@
+services:
+  mariadb:
+    image: mariadb:11
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: butlarr
+      MYSQL_USER: butlarr
+      MYSQL_PASSWORD: secret
+    volumes:
+      - ./docker/mariadb-init:/docker-entrypoint-initdb.d
+      - ./mariadb:/var/lib/mysql
+    ports:
+      - 3306:3306
